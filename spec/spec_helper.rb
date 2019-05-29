@@ -22,6 +22,8 @@ require 'rspec'
 require 'capybara/rspec'
 require 'capybara'
 
+require 'features/web_helpers.rb'
+
 Capybara.app = MyApp
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

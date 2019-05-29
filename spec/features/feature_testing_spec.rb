@@ -10,19 +10,12 @@ describe MyApp do
     end
 
     it 'should display names entered in a form' do
-      visit '/'
-      fill_in('Player_1', with: 'Ed')
-      fill_in('Player_2', with: 'Mel')
-      click_on 'Start battle!'
+      sign_in_and_play
       expect(page).to have_content('Ed vs. Mel')
     end
-
+    
     it 'should show player 2\'s hit points' do
-      visit '/'
-      visit '/'
-      fill_in('Player_1', with: 'Ed')
-      fill_in('Player_2', with: 'Mel')
-      click_on 'Start battle!'
+      sign_in_and_play
       expect(page).to have_content('Ed vs. Mel (100 Hit Points)')
     end
   end
