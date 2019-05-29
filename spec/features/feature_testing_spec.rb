@@ -3,6 +3,7 @@ require 'spec_helper'
 
 describe MyApp do
   describe 'the homepage', type: :feature do
+
     it 'should display particular message on homepage' do
       visit '/'
       expect(page).to have_content 'Testing infrastructure working!'
@@ -14,6 +15,15 @@ describe MyApp do
       fill_in('Player_2', with: 'Mel')
       click_on 'Start battle!'
       expect(page).to have_content('Ed vs. Mel')
+    end
+
+    it 'should show player 2\'s hit points' do
+      visit '/'
+      visit '/'
+      fill_in('Player_1', with: 'Ed')
+      fill_in('Player_2', with: 'Mel')
+      click_on 'Start battle!'
+      expect(page).to have_content('Ed vs. Mel (100 Hit Points)')
     end
   end
 end
