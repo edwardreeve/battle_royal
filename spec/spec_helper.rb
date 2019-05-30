@@ -18,13 +18,13 @@ ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
-require 'rspec'
-require 'capybara/rspec'
 require 'capybara'
+require 'capybara/rspec'
+require 'rspec'
 
 require 'features/web_helpers.rb'
 
-Capybara.app = MyApp
+Capybara.app = BattleRoyale
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

@@ -1,6 +1,6 @@
 require 'sinatra/base'
 
-class MyApp < Sinatra::Application
+class BattleRoyale < Sinatra::Application
   configure do
     enable :sessions
   end
