@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'player'
+require './lib/player'
 
 # The world's greatest fighting game
 class BattleRoyale < Sinatra::Application
@@ -18,18 +18,19 @@ class BattleRoyale < Sinatra::Application
   end
 
   get '/play' do
-    @player1 = $player1.name
-    @player2 = $player2.name
+    @player1 = $player1
+    @player2 = $player2
     erb :play
   end
 
   post '/play' do
+    $player2.attack
     redirect '/attack'
   end
-
+  
   get '/attack' do
-    @player1 = $player1.name
-    @player2 = $player2.name
+    @player1 = $player1
+    @player2 = $player2
     erb :attacked
   end
 end
