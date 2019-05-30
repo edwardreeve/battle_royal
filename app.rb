@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'player'
 
 # The world's greatest fighting game
 class BattleRoyale < Sinatra::Application
@@ -11,14 +12,14 @@ class BattleRoyale < Sinatra::Application
   end
 
   post '/names' do
-    session[:Player_1] = params[:Player_1]
-    session[:Player_2] = params[:Player_2]
+    $player1 = Player.new(params[:Player_1])
+    $player2 = Player.new(params[:Player_2])
     redirect '/play'
   end
 
   get '/play' do
-    @player1 = session[:Player_1]
-    @player2 = session[:Player_2]
+    @player1 = $player1.name
+    @player2 = $player2.name
     erb :play
   end
 
@@ -27,8 +28,8 @@ class BattleRoyale < Sinatra::Application
   end
 
   get '/attack' do
-    @player1 = session[:Player_1]
-    @player2 = session[:Player_2]
+    @player1 = $player1.name
+    @player2 = $player2.name
     erb :attacked
   end
 end
