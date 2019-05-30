@@ -1,12 +1,13 @@
 require 'sinatra/base'
 
+# The world's greatest fighting game
 class BattleRoyale < Sinatra::Application
   configure do
     enable :sessions
   end
 
   get '/' do
-    erb(:index)
+    erb :index
   end
 
   post '/names' do
@@ -16,8 +17,18 @@ class BattleRoyale < Sinatra::Application
   end
 
   get '/play' do
-    @Player_1 = session[:Player_1]
-    @Player_2 = session[:Player_2]
+    @player1 = session[:Player_1]
+    @player2 = session[:Player_2]
     erb :play
+  end
+
+  post '/play' do
+    redirect '/attack'
+  end
+
+  get '/attack' do
+    @player1 = session[:Player_1]
+    @player2 = session[:Player_2]
+    erb :attacked
   end
 end
