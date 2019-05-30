@@ -24,7 +24,7 @@ class BattleRoyale < Sinatra::Application
   end
 
   post '/play' do
-    $player2.attack
+    $player1.attack($player2)
     redirect '/attack'
   end
   
